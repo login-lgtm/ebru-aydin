@@ -7,7 +7,7 @@
   <meta name="description" content="Mobile Physiotherapie in Hamburg & Umgebung. Ebru Aydin kommt zu Ihnen nach Hause – für eine individuelle, persönliche Behandlung." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,8 +17,8 @@
       --beige:       #f7f2ea;
       --beige-light: #faf7f2;
       --beige-mid:   #ede5d8;
-      --terra:       #b8512f;
-      --terra-hover: #a04428;
+      --terra:       #c05a38;
+      --terra-hover: #a84a2c;
       --text:        #1e1e1e;
       --muted:       #7a6f63;
       --white:       #ffffff;
@@ -27,7 +27,8 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Lato', sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
       background: var(--beige-light);
       color: var(--text);
       overflow-x: hidden;
@@ -46,11 +47,11 @@
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--terra); color: var(--white);
-      font-family: 'Lato', sans-serif; font-weight: 700; font-size: 14px;
-      padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer;
-      text-decoration: none; transition: background .2s, transform .15s;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+      padding: 14px 32px; border-radius: 8px; border: none; cursor: pointer; letter-spacing: 0.3px;
+      text-decoration: none; transition: background .2s, transform .15s, box-shadow .2s;
     }
-    .btn:hover { background: var(--terra-hover); transform: translateY(-1px); }
+    .btn:hover { background: var(--terra-hover); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(192,90,56,.2); }
     .btn-outline {
       background: transparent; border: 2px solid var(--white); color: var(--white);
     }
@@ -72,12 +73,13 @@
       display: flex; align-items: center; justify-content: space-between;
       width: 100%;
     }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; transition: transform .25s ease; }
+    .nav-logo:hover { transform: scale(1.04); }
     .nav-logo-icon {
       width: 40px; height: 40px; border-radius: 50%;
       background: rgba(247,242,234,.12);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif; font-size: 14px;
+      font-family: 'Cormorant Garant', serif; font-size: 14px;
       color: var(--beige); font-weight: 700;
     }
     .nav-logo-text { display: flex; flex-direction: column; }
@@ -105,7 +107,7 @@
     .hero {
       padding-top: 70px;
       min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 0.75fr;
       align-items: center;
       background: var(--beige-light);
       position: relative; overflow: hidden;
@@ -118,18 +120,18 @@
     .hero-content { padding: 80px 0 120px 0; position: relative; z-index: 2; }
     .hero-tag { margin-bottom: 24px; }
     .hero h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garant', serif;
       font-size: clamp(42px, 5vw, 68px);
       font-weight: 400; line-height: 1.12;
       color: var(--text); margin-bottom: 20px;
     }
     .hero h1 em { font-style: italic; color: var(--terra); }
     .hero-sub {
-      font-size: 18px; font-weight: 300; color: var(--muted);
+      font-size: 20px; font-weight: 300; color: var(--muted);
       margin-bottom: 20px; line-height: 1.6;
     }
     .hero-body {
-      font-size: 15px; color: var(--muted); line-height: 1.8;
+      font-size: 17px; color: var(--muted); line-height: 1.8;
       margin-bottom: 40px; max-width: 440px;
     }
     .hero-trust {
@@ -139,7 +141,7 @@
     .hero-image-wrap { position: relative; display: flex; justify-content: center; align-items: center; padding: 80px 0 100px 40px; }
     .hero-image-blob {
       position: absolute;
-      width: 520px; height: 520px; border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+      width: 480px; height: 480px; border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
       background: var(--beige-mid);
       top: 50%; left: 50%; transform: translate(-50%, -50%);
       animation: blobmorph 8s ease-in-out infinite;
@@ -154,6 +156,11 @@
       width: 420px; height: 520px;
       object-fit: cover; border-radius: 50% 50% 48% 52% / 44% 44% 56% 56%;
       box-shadow: 0 30px 80px rgba(22,47,39,.18);
+      animation: herofloat 6s ease-in-out infinite;
+    }
+    @keyframes herofloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
     }
 
     /* ─── WAVE DIVIDER (reusable) ─────────────────── */
@@ -186,13 +193,13 @@
     }
     .about-tag { margin-bottom: 20px; }
     .about h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garant', serif;
       font-size: clamp(34px, 3.5vw, 48px);
       font-weight: 400; line-height: 1.2;
       color: var(--text); margin-bottom: 24px;
     }
     .about-body {
-      font-size: 15px; color: var(--muted); line-height: 1.85;
+      font-size: 17px; color: var(--muted); line-height: 1.85;
       margin-bottom: 36px;
     }
     .about-features {
@@ -205,25 +212,26 @@
       background: var(--beige); flex-shrink: 0;
       display: flex; align-items: center; justify-content: center; font-size: 16px;
     }
-    .feature-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-    .feature-text span { font-size: 12px; color: var(--muted); }
+    .feature-text strong { display: block; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .feature-text span { font-size: 14px; color: var(--muted); }
     .more-link {
       font-size: 14px; font-weight: 700; color: var(--terra);
       text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-      transition: gap .2s;
+      transition: color .2s;
     }
-    .more-link:hover { gap: 10px; }
+    .more-link span.arrow { display: inline-block; transition: transform .25s ease; }
+    .more-link:hover span.arrow { transform: translateX(5px); }
 
     /* ─── LEISTUNGEN ──────────────────────────────── */
     .leistungen {
       background: var(--beige);
-      padding: 100px 0;
+      padding: 100px 0 0;
       position: relative;
     }
     .leistungen-header { text-align: center; margin-bottom: 64px; }
     .leistungen-header .tag { justify-content: center; margin-bottom: 16px; }
     .leistungen-header h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garant', serif;
       font-size: clamp(32px, 3.5vw, 48px);
       font-weight: 400; line-height: 1.2; color: var(--text);
     }
@@ -232,24 +240,28 @@
       gap: 24px; margin-bottom: 56px;
     }
     .card {
-      background: var(--white); border-radius: 16px;
-      padding: 36px 28px; transition: transform .25s, box-shadow .25s;
+      background: transparent;
+      border: none;
+      padding: 8px 0; transition: transform .3s;
       cursor: default;
     }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(22,47,39,.1); }
+    .card:hover { transform: translateY(-4px); }
+    .card:hover .card-icon { transform: rotate(8deg) scale(1.1); }
     .card-icon {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: var(--beige); display: flex; align-items: center;
-      justify-content: center; font-size: 22px; margin-bottom: 20px;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--terra); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 20px; flex-shrink: 0;
+      transition: transform .3s ease;
+      box-shadow: 0 8px 20px rgba(192,90,56,.25);
     }
-    .card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
-    .card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .card h3 { font-family: 'Cormorant Garant', serif; font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .card p { font-size: 15px; color: var(--muted); line-height: 1.8; }
     .leistungen-cta { text-align: center; }
 
     /* ─── HAUSBESUCHE ─────────────────────────────── */
     .hausbesuche {
       background: var(--white);
-      padding: 100px 0;
+      padding: 100px 0 0;
       position: relative; overflow: hidden;
     }
     .hausbesuche-inner {
@@ -258,12 +270,12 @@
     }
     .haus-tag { margin-bottom: 20px; }
     .hausbesuche h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garant', serif;
       font-size: clamp(32px, 3.5vw, 46px);
       font-weight: 400; line-height: 1.2;
       color: var(--text); margin-bottom: 24px;
     }
-    .haus-body { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 36px; }
+    .haus-body { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 36px; }
     .haus-image img {
       width: 100%; height: 420px; object-fit: cover;
       border-radius: 16px;
@@ -278,44 +290,173 @@
     }
     .hausbesuche-inner { position: relative; z-index: 1; }
 
-    /* ─── CTA BAND ────────────────────────────────── */
-    .cta-band {
-      background: var(--green);
-      padding: 80px 0;
+    /* ─── ABLAUF ─────────────────────────────────── */
+    .ablauf {
+      background: var(--beige);
+      padding: 100px 0 0;
+      position: relative;
+    }
+    .ablauf-header { text-align: center; margin-bottom: 64px; }
+    .ablauf-header .tag { justify-content: center; margin-bottom: 16px; }
+    .ablauf-header h2 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 400; line-height: 1.2; color: var(--text);
+    }
+    .ablauf-steps {
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch; gap: 0;
+    }
+    .ablauf-step {
+      background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.85); border-radius: 20px;
+      padding: 40px 32px; text-align: center;
       position: relative; overflow: hidden;
     }
-    .cta-band-wave {
-      position: absolute; top: -2px; left: 0; right: 0;
-      line-height: 0; pointer-events: none;
+    .ablauf-num {
+      font-family: 'Cormorant Garant', serif; font-size: 140px; font-weight: 400;
+      color: var(--beige-mid); line-height: 1;
+      position: absolute; bottom: -20px; right: 8px;
+      opacity: .35; pointer-events: none; user-select: none;
     }
-    .cta-band-wave svg { width: 100%; }
-    .cta-band-inner {
+    .ablauf-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--beige); display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 20px;
+    }
+    .ablauf-step h3 {
+      font-family: 'Cormorant Garant', serif; font-size: 24px; font-weight: 500;
+      color: var(--text); margin-bottom: 12px;
+    }
+    .ablauf-step p { font-size: 15px; color: var(--muted); line-height: 1.8; }
+    .ablauf-connector {
+      width: 48px; height: 2px; background: var(--beige-mid);
+      align-self: center; margin: 0 8px; margin-top: -60px;
+      position: relative;
+      opacity: 0; transform: scaleX(0); transform-origin: left;
+      transition: transform .6s ease .5s, opacity .1s ease .5s;
+    }
+    .ablauf-connector.visible { transform: scaleX(1); opacity: 1; }
+    .ablauf-connector::after {
+      content: ''; position: absolute; right: -5px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--beige-mid);
+    }
+    @media (max-width: 768px) {
+      .ablauf-steps { grid-template-columns: 1fr; gap: 20px; }
+      .ablauf-connector { display: none; }
+    }
+
+    /* ─── KONTAKT SECTION ────────────────────────── */
+    .kontakt-section {
+      background: var(--white);
+      padding: 80px 0 100px;
+      position: relative;
+    }
+    .kontakt-header { text-align: center; margin-bottom: 56px; }
+    .kontakt-header .tag { justify-content: center; margin-bottom: 16px; }
+    .kontakt-header h2 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(36px, 4vw, 56px); font-weight: 400;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .kontakt-sub {
+      font-size: 17px; color: var(--muted); max-width: 440px;
+      margin: 0 auto; line-height: 1.7;
+    }
+    .kontakt-cards {
+      display: flex; justify-content: center; align-items: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .kontakt-card {
+      text-decoration: none; display: flex; flex-direction: column;
+      align-items: center; gap: 6px; padding: 0 56px;
+      border-right: 1px solid var(--beige-mid);
+      transition: opacity .2s;
+    }
+    .kontakt-card:last-child { border-right: none; }
+    .kontakt-card:hover { opacity: .7; }
+    .kontakt-card-icon { display: none; }
+    .kontakt-card-label {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      font-weight: 700; color: var(--terra);
+    }
+    .kontakt-card-value {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 26px; font-weight: 400; color: var(--text);
+    }
+    .kontakt-card-hint { display: none; }
+    @media (max-width: 768px) {
+      .kontakt-cards { flex-direction: column; gap: 32px; }
+      .kontakt-card { border-right: none; padding: 0; }
+    }
+
+    /* ─── FOOTER CTA ──────────────────────────────── */
+    .footer-cta {
+      background: var(--green);
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-cta-inner {
       display: flex; align-items: center; justify-content: space-between;
       gap: 40px; flex-wrap: wrap;
     }
-    .cta-band-left h2 {
-      font-family: 'Playfair Display', serif;
+    .footer-cta-left h2 {
+      font-family: 'Cormorant Garant', serif;
       font-size: clamp(28px, 3vw, 42px); font-weight: 400;
       color: var(--beige); margin-bottom: 8px;
     }
-    .cta-band-left p { font-size: 15px; color: rgba(247,242,234,.6); }
-    .cta-band-info { display: flex; flex-direction: column; gap: 12px; }
-    .cta-info-item { display: flex; align-items: center; gap: 12px; color: var(--beige); font-size: 14px; }
-    .cta-info-item span:first-child { font-size: 18px; }
-    .cta-band-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+    .footer-cta-left p { font-size: 17px; color: rgba(247,242,234,.6); }
+    .footer-cta-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
     /* ─── FOOTER ──────────────────────────────────── */
     footer {
       background: var(--green-dark);
-      padding: 28px 0; border-top: 1px solid rgba(255,255,255,.06);
+      padding: 64px 0 32px;
+      border-top: none;
+      margin-top: 0;
     }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .footer-brand { font-size: 12px; color: rgba(247,242,234,.4); letter-spacing: .5px; }
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a { font-size: 11px; color: rgba(247,242,234,.35); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: rgba(247,242,234,.7); }
+    .footer-col-logo img {
+      width: 75%; height: auto; filter: brightness(0) invert(1); opacity: .85;
+      display: block;
+    }
+    .footer-col-logo p {
+      font-size: 15px; color: rgba(247,242,234,.45); line-height: 1.7; max-width: 240px;
+    }
+    .footer-col h4 {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--terra); font-weight: 700; margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 15px; color: rgba(247,242,234,.55); text-decoration: none;
+      transition: color .2s, padding-left .2s;
+      display: inline-block;
+    }
+    .footer-col ul a:hover { color: rgba(247,242,234,.9); padding-left: 4px; }
+    .footer-contact-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 15px; color: rgba(247,242,234,.55); margin-bottom: 10px;
+    }
+    .footer-contact-item svg { flex-shrink: 0; opacity: .6; }
+    .footer-contact-item a { color: rgba(247,242,234,.55); text-decoration: none; transition: color .2s; }
+    .footer-contact-item a:hover { color: rgba(247,242,234,.9); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; padding-top: 24px;
+    }
+    .footer-copy { font-size: 11px; color: rgba(247,242,234,.25); letter-spacing: .3px; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 11px; color: rgba(247,242,234,.25); text-decoration: none; transition: color .2s; }
+    .footer-legal a:hover { color: rgba(247,242,234,.6); }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
 
     /* ─── BEIGE WAVE SECTIONS ─────────────────────── */
     .wave-section-beige {
@@ -333,8 +474,8 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-content { padding: 60px 0 40px; }
-      .hero-image-wrap { padding: 0 0 60px; justify-content: center; }
+      .hero-content { padding: 40px 0 60px; order: 2; }
+      .hero-image-wrap { padding: 60px 0 0; justify-content: center; order: 1; }
       .hero-image { width: 320px; height: 380px; }
       .hero-image-blob { width: 360px; height: 360px; }
       .about-inner { grid-template-columns: 1fr; }
@@ -343,9 +484,29 @@
       .cards { grid-template-columns: 1fr; }
       .hausbesuche-inner { grid-template-columns: 1fr; }
       .haus-image img { height: 300px; }
-      .cta-band-inner { flex-direction: column; align-items: flex-start; }
-      .cta-band-right { align-items: flex-start; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-cta-inner { flex-direction: column; align-items: flex-start; }
+      .footer-cta-right { flex-direction: column; align-items: flex-start; }
+
+      /* ─── MOBILE SCHRIFTGRÖSSEN ───────────────────── */
+      body { font-size: 18px; }
+      .hero-sub { font-size: 20px; }
+      .hero-body { font-size: 18px; }
+      .hero-trust { font-size: 12px; }
+      .about-body { font-size: 18px; }
+      .feature-text strong { font-size: 17px; }
+      .feature-text span { font-size: 15px; }
+      .more-link { font-size: 17px; }
+      .card p { font-size: 16px; }
+      .card h3 { font-size: 24px; }
+      .haus-body { font-size: 18px; }
+      .ablauf-step p { font-size: 17px; }
+      .ablauf-step h3 { font-size: 26px; }
+      .footer-cta-left p { font-size: 18px; }
+      .btn { font-size: 16px; padding: 16px 28px; }
+      .mobile-menu a { font-size: 20px; }
+      .cta-info-item { font-size: 17px; }
+      .footer-col ul a { font-size: 17px; }
+      .footer-contact-item { font-size: 17px; }
       .haus-wave-deco { display: none; }
     }
   </style>
@@ -354,14 +515,9 @@
 
 <!-- ─── NAVIGATION ──────────────────────────────── -->
 <nav id="navbar">
-  <div class="container">
-    <div class="nav-inner">
+  <div class="nav-inner" style="width:100%;padding:0 40px;">
       <a href="#" class="nav-logo">
-        <div class="nav-logo-icon">EA</div>
-        <div class="nav-logo-text">
-          <span class="nav-logo-name">Ebru Aydin</span>
-          <span class="nav-logo-sub">Physiotherapie mit Herz</span>
-        </div>
+        <img src="images/ebru-logo-3.svg" alt="Ebru Aydin – Physiotherapie mit Herz" style="height:32px;width:auto;max-width:180px;filter:brightness(0) invert(1);" />
       </a>
       <div class="nav-links">
         <a href="#ueber-mich">Über mich</a>
@@ -374,7 +530,6 @@
         <span></span><span></span><span></span>
       </div>
     </div>
-  </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -433,35 +588,43 @@
         </p>
         <div class="about-features">
           <div class="feature-item">
-            <div class="feature-icon">🕐</div>
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
             <div class="feature-text">
               <strong>Individuelle Behandlung</strong>
               <span>ohne Zeitdruck</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">🤝</div>
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
             <div class="feature-text">
               <strong>Einfühlsame Betreuung</strong>
               <span>mit Herz & Verstand</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">💬</div>
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
             <div class="feature-text">
               <strong>Auch Zeit für</strong>
               <span>ein Gespräch</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">🏠</div>
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
             <div class="feature-text">
               <strong>Unterstützung</strong>
               <span>im Alltag</span>
             </div>
           </div>
         </div>
-        <a href="#kontakt" class="more-link">Mehr erfahren &rarr;</a>
+        <a href="#kontakt" class="more-link">Mehr erfahren <span class="arrow">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -481,22 +644,30 @@
   <div class="container">
     <div class="cards">
       <div class="card reveal">
-        <div class="card-icon">🚶</div>
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l3 3"/><path d="M6 16c1.5-2 3.5-3 6-3s4.5 1 6 3"/></svg>
+        </div>
         <h3>Mobilität fördern</h3>
         <p>Beweglichkeit verbessern, Kraft aufbauen und aktiv bleiben – damit Sie Ihren Alltag selbstständig gestalten können.</p>
       </div>
       <div class="card reveal" style="transition-delay:.08s">
-        <div class="card-icon">✋</div>
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
         <h3>Schmerzen lindern</h3>
         <p>Gezielte Behandlung bei akuten und chronischen Beschwerden – sanft, effektiv und nachhaltig.</p>
       </div>
       <div class="card reveal" style="transition-delay:.16s">
-        <div class="card-icon">🎯</div>
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
         <h3>Individuelle Therapie</h3>
         <p>Maßgeschneiderte Übungen und Betreuung – ganz auf Sie und Ihre Bedürfnisse abgestimmt.</p>
       </div>
       <div class="card reveal" style="transition-delay:.24s">
-        <div class="card-icon">🌿</div>
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
         <h3>Unterstützung im Alltag</h3>
         <p>Hilfe und Beratung für mehr Selbstständigkeit und Sicherheit – auch für Angehörige.</p>
       </div>
@@ -526,7 +697,7 @@
           Gerne können sich auch Angehörige bei mir melden, wenn Sie
           Unterstützung bei der Pflege oder Begleitung benötigen.
         </p>
-        <a href="#kontakt" class="more-link">Termin vereinbaren &rarr;</a>
+        <a href="#kontakt" class="more-link">Termin vereinbaren <span class="arrow">&rarr;</span></a>
       </div>
       <div class="haus-image reveal" style="transition-delay:.1s">
         <img src="images/hausbesuche.png" alt="Physiotherapeutin bei einem Hausbesuch" />
@@ -534,49 +705,143 @@
     </div>
   </div>
   <!-- Wave bottom -->
-  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;margin-top:80px;line-height:0;">
-    <path d="M0,60 C360,0 1080,90 1440,30 L1440,90 L0,90 Z" fill="var(--green)"/>
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;margin-top:40px;line-height:0;">
+    <path d="M0,60 C360,0 1080,90 1440,30 L1440,90 L0,90 Z" fill="var(--beige)"/>
   </svg>
 </section>
 
-<!-- ─── CTA BAND ───────────────────────────────── -->
-<section class="cta-band" id="kontakt">
+<!-- ─── ABLAUF ────────────────────────────────── -->
+<section class="ablauf" id="ablauf">
   <div class="container">
-    <div class="cta-band-inner">
-      <div class="cta-band-left reveal">
-        <h2>Ich bin für Sie da.</h2>
-        <p>Gerne können sich auch Angehörige bei mir melden.</p>
+    <div class="ablauf-header reveal">
+      <div class="tag" style="justify-content:center">So einfach geht's</div>
+      <h2>In drei Schritten<br>zu Ihrer Behandlung.</h2>
+    </div>
+    <div class="ablauf-steps">
+      <div class="ablauf-step reveal">
+        <div class="ablauf-num">01</div>
+        <div class="ablauf-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Kontakt aufnehmen</h3>
+        <p>Rufen Sie mich einfach an oder schreiben Sie mir eine Nachricht. Ich melde mich schnellstmöglich bei Ihnen zurück und beantworte alle Ihre Fragen.</p>
       </div>
-      <div class="cta-band-info reveal" style="transition-delay:.1s">
-        <div class="cta-info-item">
-          <span>📞</span>
-          <span>0176 123 45 678</span>
+      <div class="ablauf-connector reveal" aria-hidden="true"></div>
+      <div class="ablauf-step reveal" style="transition-delay:.1s">
+        <div class="ablauf-num">02</div>
+        <div class="ablauf-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-        <div class="cta-info-item">
-          <span>📍</span>
-          <span>Hamburg &amp; Umgebung &nbsp;·&nbsp; Hausbesuche</span>
-        </div>
-        <div class="cta-info-item">
-          <span>✉️</span>
-          <span>info@ebru-aydin.de</span>
-        </div>
+        <h3>Termin vereinbaren</h3>
+        <p>Gemeinsam finden wir einen passenden Termin – flexibel und ganz nach Ihren Möglichkeiten. Ich komme zu einem Zeitpunkt, der für Sie angenehm ist.</p>
       </div>
-      <div class="cta-band-right reveal" style="transition-delay:.2s">
-        <a href="tel:+4917612345678" class="btn">Jetzt anrufen</a>
-        <a href="mailto:info@ebru-aydin.de" class="btn btn-outline">E-Mail schreiben</a>
+      <div class="ablauf-connector reveal" aria-hidden="true"></div>
+      <div class="ablauf-step reveal" style="transition-delay:.2s">
+        <div class="ablauf-num">03</div>
+        <div class="ablauf-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Behandlung bei Ihnen</h3>
+        <p>Ich komme mit allem Nötigen zu Ihnen nach Hause. Sie müssen nichts vorbereiten – lehnen Sie sich zurück und lassen Sie sich in vertrauter Umgebung behandeln.</p>
       </div>
     </div>
+    <div class="ablauf-cta reveal" style="text-align:center;margin-top:48px;">
+      <a href="#kontakt" class="btn">Jetzt Termin anfragen &rarr;</a>
+    </div>
   </div>
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;margin-top:80px;margin-bottom:-2px;line-height:0;">
+    <path d="M0,0 L0,30 C360,90 1080,0 1440,60 L1440,90 L0,90 Z" fill="var(--white)"/>
+  </svg>
+</section>
+
+<!-- ─── KONTAKT ───────────────────────────────── -->
+<section class="kontakt-section" id="kontakt">
+  <div class="container">
+    <div class="kontakt-header reveal">
+      <div class="tag" style="justify-content:center">Kontakt</div>
+      <h2>Ich bin für Sie da.</h2>
+      <p class="kontakt-sub">Rufen Sie mich an oder schreiben Sie mir – ich melde mich schnellstmöglich bei Ihnen.</p>
+    </div>
+    <div class="kontakt-cards reveal" style="transition-delay:.15s">
+      <a href="tel:+4917612345678" class="kontakt-card">
+        <div class="kontakt-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <span class="kontakt-card-label">Telefon</span>
+        <span class="kontakt-card-value">0176 123 45 678</span>
+        <span class="kontakt-card-hint">Jetzt anrufen <span class="arrow">&rarr;</span></span>
+      </a>
+      <a href="https://wa.me/4917612345678" target="_blank" rel="noopener" class="kontakt-card">
+        <div class="kontakt-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </div>
+        <span class="kontakt-card-label">WhatsApp</span>
+        <span class="kontakt-card-value">0176 123 45 678</span>
+        <span class="kontakt-card-hint">Nachricht schreiben <span class="arrow">&rarr;</span></span>
+      </a>
+      <a href="mailto:info@ebru-aydin.de" class="kontakt-card">
+        <div class="kontakt-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span class="kontakt-card-label">E-Mail</span>
+        <span class="kontakt-card-value">info@ebru-aydin.de</span>
+        <span class="kontakt-card-hint">E-Mail schreiben <span class="arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </div>
+  <div style="height:80px"></div>
 </section>
 
 <!-- ─── FOOTER ────────────────────────────────── -->
-<footer>
+<footer id="kontakt" style="position:relative;">
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="position:absolute;top:-89px;left:0;width:100%;height:90px;display:block;line-height:0;">
+    <path d="M0,0 L0,60 C480,0 960,90 1440,30 L1440,90 L0,90 Z" fill="#0e1f1a"/>
+  </svg>
   <div class="container">
-    <div class="footer-inner">
-      <span class="footer-brand">© 2024 Ebru Aydin – Physiotherapie mit Herz</span>
-      <div class="footer-links">
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
+    <div class="footer-grid">
+
+      <!-- Logo + Tagline -->
+      <div class="footer-col-logo">
+        <img src="images/ebru-logo.svg" alt="Ebru Aydin" />
+      </div>
+
+      <!-- Navigation -->
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#ueber-mich">Über mich</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#hausbesuche">Hausbesuche</a></li>
+          <li><a href="#ablauf">So läuft es ab</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+4917612345678">0176 123 45 678</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@ebru-aydin.de">info@ebru-aydin.de</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Hamburg &amp; Umgebung</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Ebru Aydin – Physiotherapie mit Herz</span>
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
       </div>
     </div>
   </div>
@@ -596,7 +861,11 @@
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
 </script>
