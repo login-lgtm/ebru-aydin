@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebru Aydin – Physiotherapie mit Herz</title>
+  <meta name="description" content="Mobile Physiotherapie in Hamburg & Umgebung. Ebru Aydin kommt zu Ihnen nach Hause – für eine individuelle, persönliche Behandlung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #162f27;
+      --green-dark:  #0e1f1a;
+      --beige:       #f7f2ea;
+      --beige-light: #faf7f2;
+      --beige-mid:   #ede5d8;
+      --terra:       #b8512f;
+      --terra-hover: #a04428;
+      --text:        #1e1e1e;
+      --muted:       #7a6f63;
+      --white:       #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--beige-light);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY ─────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .tag {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--terra); font-weight: 700; display: flex; align-items: center; gap: 8px;
+    }
+    .tag::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--terra); flex-shrink: 0;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--terra); color: var(--white);
+      font-family: 'Lato', sans-serif; font-weight: 700; font-size: 14px;
+      padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer;
+      text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .btn:hover { background: var(--terra-hover); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; border: 2px solid var(--white); color: var(--white);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
+
+    /* ─── FADE-IN ON SCROLL ───────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── NAVIGATION ──────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--green);
+      height: 70px; display: flex; align-items: center;
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.18); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(247,242,234,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 14px;
+      color: var(--beige); font-weight: 700;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-size: 13px; font-weight: 700; color: var(--beige); letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
+    .nav-logo-sub { font-size: 9px; color: rgba(247,242,234,.55); letter-spacing: 2px; text-transform: uppercase; font-weight: 300; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      font-size: 14px; color: rgba(247,242,234,.8);
+      text-decoration: none; font-weight: 400; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--beige); }
+    .nav-cta { margin-left: 16px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--beige); border-radius: 2px; transition: .3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 99;
+      background: var(--green-dark); padding: 24px 40px;
+      flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--beige); text-decoration: none; font-size: 16px; font-weight: 400; }
+    .mobile-menu .btn { align-self: flex-start; margin-top: 8px; }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero {
+      padding-top: 70px;
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      background: var(--beige-light);
+      position: relative; overflow: hidden;
+    }
+    .hero-wave {
+      position: absolute; bottom: -2px; left: 0; right: 0;
+      line-height: 0; pointer-events: none;
+    }
+    .hero-wave svg { width: 100%; }
+    .hero-content { padding: 80px 0 120px 0; position: relative; z-index: 2; }
+    .hero-tag { margin-bottom: 24px; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 400; line-height: 1.12;
+      color: var(--text); margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--terra); }
+    .hero-sub {
+      font-size: 18px; font-weight: 300; color: var(--muted);
+      margin-bottom: 20px; line-height: 1.6;
+    }
+    .hero-body {
+      font-size: 15px; color: var(--muted); line-height: 1.8;
+      margin-bottom: 40px; max-width: 440px;
+    }
+    .hero-trust {
+      margin-top: 40px; font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted); font-weight: 700;
+    }
+    .hero-image-wrap { position: relative; display: flex; justify-content: center; align-items: center; padding: 80px 0 100px 40px; }
+    .hero-image-blob {
+      position: absolute;
+      width: 520px; height: 520px; border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+      background: var(--beige-mid);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: blobmorph 8s ease-in-out infinite;
+    }
+    @keyframes blobmorph {
+      0%,100% { border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%; }
+      33%      { border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%; }
+      66%      { border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%; }
+    }
+    .hero-image {
+      position: relative; z-index: 2;
+      width: 420px; height: 520px;
+      object-fit: cover; border-radius: 50% 50% 48% 52% / 44% 44% 56% 56%;
+      box-shadow: 0 30px 80px rgba(22,47,39,.18);
+    }
+
+    /* ─── WAVE DIVIDER (reusable) ─────────────────── */
+    .wave-down { display: block; width: 100%; line-height: 0; }
+    .wave-up   { display: block; width: 100%; line-height: 0; transform: rotate(180deg); }
+
+    /* ─── ÜBER MICH ───────────────────────────────── */
+    .about {
+      background: var(--white);
+      padding: 100px 0 0;
+      position: relative;
+    }
+    .about-inner {
+      display: grid; grid-template-columns: 420px 1fr;
+      gap: 80px; align-items: center;
+      padding-bottom: 100px;
+    }
+    .about-image {
+      position: relative;
+    }
+    .about-image img {
+      width: 100%; height: 540px; object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(22,47,39,.12);
+    }
+    .about-image-accent {
+      position: absolute; bottom: -20px; right: -20px;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--beige-mid); z-index: -1;
+    }
+    .about-tag { margin-bottom: 20px; }
+    .about h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 3.5vw, 48px);
+      font-weight: 400; line-height: 1.2;
+      color: var(--text); margin-bottom: 24px;
+    }
+    .about-body {
+      font-size: 15px; color: var(--muted); line-height: 1.85;
+      margin-bottom: 36px;
+    }
+    .about-features {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px 32px; margin-bottom: 40px;
+    }
+    .feature-item { display: flex; align-items: flex-start; gap: 12px; }
+    .feature-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--beige); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .feature-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .feature-text span { font-size: 12px; color: var(--muted); }
+    .more-link {
+      font-size: 14px; font-weight: 700; color: var(--terra);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      transition: gap .2s;
+    }
+    .more-link:hover { gap: 10px; }
+
+    /* ─── LEISTUNGEN ──────────────────────────────── */
+    .leistungen {
+      background: var(--beige);
+      padding: 100px 0;
+      position: relative;
+    }
+    .leistungen-header { text-align: center; margin-bottom: 64px; }
+    .leistungen-header .tag { justify-content: center; margin-bottom: 16px; }
+    .leistungen-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 400; line-height: 1.2; color: var(--text);
+    }
+    .cards {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-bottom: 56px;
+    }
+    .card {
+      background: var(--white); border-radius: 16px;
+      padding: 36px 28px; transition: transform .25s, box-shadow .25s;
+      cursor: default;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(22,47,39,.1); }
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--beige); display: flex; align-items: center;
+      justify-content: center; font-size: 22px; margin-bottom: 20px;
+    }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .leistungen-cta { text-align: center; }
+
+    /* ─── HAUSBESUCHE ─────────────────────────────── */
+    .hausbesuche {
+      background: var(--white);
+      padding: 100px 0;
+      position: relative; overflow: hidden;
+    }
+    .hausbesuche-inner {
+      display: grid; grid-template-columns: 1fr 520px;
+      gap: 80px; align-items: center;
+    }
+    .haus-tag { margin-bottom: 20px; }
+    .hausbesuche h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.5vw, 46px);
+      font-weight: 400; line-height: 1.2;
+      color: var(--text); margin-bottom: 24px;
+    }
+    .haus-body { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 36px; }
+    .haus-image img {
+      width: 100%; height: 420px; object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(22,47,39,.12);
+    }
+    /* decorative wave behind hausbesuche image */
+    .haus-wave-deco {
+      position: absolute; right: -120px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px; border-radius: 50%;
+      background: var(--beige); opacity: .5; z-index: 0;
+    }
+    .hausbesuche-inner { position: relative; z-index: 1; }
+
+    /* ─── CTA BAND ────────────────────────────────── */
+    .cta-band {
+      background: var(--green);
+      padding: 80px 0;
+      position: relative; overflow: hidden;
+    }
+    .cta-band-wave {
+      position: absolute; top: -2px; left: 0; right: 0;
+      line-height: 0; pointer-events: none;
+    }
+    .cta-band-wave svg { width: 100%; }
+    .cta-band-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .cta-band-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 42px); font-weight: 400;
+      color: var(--beige); margin-bottom: 8px;
+    }
+    .cta-band-left p { font-size: 15px; color: rgba(247,242,234,.6); }
+    .cta-band-info { display: flex; flex-direction: column; gap: 12px; }
+    .cta-info-item { display: flex; align-items: center; gap: 12px; color: var(--beige); font-size: 14px; }
+    .cta-info-item span:first-child { font-size: 18px; }
+    .cta-band-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--green-dark);
+      padding: 28px 0; border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { font-size: 12px; color: rgba(247,242,234,.4); letter-spacing: .5px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 11px; color: rgba(247,242,234,.35); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: rgba(247,242,234,.7); }
+
+    /* ─── BEIGE WAVE SECTIONS ─────────────────────── */
+    .wave-section-beige {
+      background: var(--beige);
+      position: relative;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 360px 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 60px 0 40px; }
+      .hero-image-wrap { padding: 0 0 60px; justify-content: center; }
+      .hero-image { width: 320px; height: 380px; }
+      .hero-image-blob { width: 360px; height: 360px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-image img { height: 340px; }
+      .about-features { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .hausbesuche-inner { grid-template-columns: 1fr; }
+      .haus-image img { height: 300px; }
+      .cta-band-inner { flex-direction: column; align-items: flex-start; }
+      .cta-band-right { align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .haus-wave-deco { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ──────────────────────────────── -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">EA</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Ebru Aydin</span>
+          <span class="nav-logo-sub">Physiotherapie mit Herz</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#hausbesuche">Hausbesuche</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a href="#kontakt" class="btn nav-cta">Termin anfragen</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#ueber-mich" onclick="toggleMenu()">Über mich</a>
+  <a href="#leistungen" onclick="toggleMenu()">Leistungen</a>
+  <a href="#hausbesuche" onclick="toggleMenu()">Hausbesuche</a>
+  <a href="#kontakt" onclick="toggleMenu()">Kontakt</a>
+  <a href="#kontakt" class="btn" onclick="toggleMenu()">Termin anfragen</a>
+</div>
+
+<!-- ─── HERO ────────────────────────────────────── -->
+<section class="hero">
+  <div class="container" style="display:contents;">
+    <div class="hero-content container reveal">
+      <div class="hero-tag tag">Physiotherapie mit Herz</div>
+      <h1>Physiotherapie<br>bei Ihnen <em>zuhause.</em></h1>
+      <p class="hero-sub">Mit Ruhe, Zeit und persönlicher Betreuung.</p>
+      <p class="hero-body">
+        Ich komme zu Ihnen nach Hause und unterstütze Sie dabei,
+        beweglich zu bleiben, Schmerzen zu lindern und sich wieder
+        wohler zu fühlen.
+      </p>
+      <a href="#kontakt" class="btn">Kontakt aufnehmen &rarr;</a>
+      <p class="hero-trust">Vertrauensvoll &nbsp;&middot;&nbsp; Einfühlsam &nbsp;&middot;&nbsp; Persönlich</p>
+    </div>
+    <div class="hero-image-wrap reveal" style="animation-delay:.15s">
+      <div class="hero-image-blob"></div>
+      <img class="hero-image" src="images/hero.png" alt="Ebru Aydin im Gespräch mit einer Patientin" />
+    </div>
+  </div>
+  <!-- Wave -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ─── ÜBER MICH ───────────────────────────────── -->
+<section class="about" id="ueber-mich">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-image reveal">
+        <img src="images/about.png" alt="Ebru Aydin – Physiotherapeutin" />
+        <div class="about-image-accent"></div>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="about-tag tag">Über mich</div>
+        <h2>Ich nehme mir<br>Zeit für Sie.</h2>
+        <p class="about-body">
+          Mein Name ist Ebru und ich bin staatlich geprüfte Physiotherapeutin.
+          Mit meiner mobilen Physiotherapie komme ich direkt zu Ihnen nach Hause –
+          für eine Behandlung, die individuell auf Sie abgestimmt ist.<br><br>
+          Nicht nur die Behandlung steht im Mittelpunkt, sondern der ganze Mensch
+          dahinter. Ich nehme mir die Zeit, die Sie brauchen.
+        </p>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">🕐</div>
+            <div class="feature-text">
+              <strong>Individuelle Behandlung</strong>
+              <span>ohne Zeitdruck</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🤝</div>
+            <div class="feature-text">
+              <strong>Einfühlsame Betreuung</strong>
+              <span>mit Herz & Verstand</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💬</div>
+            <div class="feature-text">
+              <strong>Auch Zeit für</strong>
+              <span>ein Gespräch</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏠</div>
+            <div class="feature-text">
+              <strong>Unterstützung</strong>
+              <span>im Alltag</span>
+            </div>
+          </div>
+        </div>
+        <a href="#kontakt" class="more-link">Mehr erfahren &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <!-- Wave bottom -->
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;line-height:0;">
+    <path d="M0,0 C360,90 1080,0 1440,60 L1440,90 L0,90 Z" fill="var(--beige)"/>
+  </svg>
+</section>
+
+<!-- ─── LEISTUNGEN ─────────────────────────────── -->
+<section class="leistungen" id="leistungen">
+  <!-- Top wave -->
+  <div class="leistungen-header container reveal">
+    <div class="tag" style="justify-content:center">Meine Leistungen</div>
+    <h2>Für mehr Lebensqualität<br>in Ihrem Alltag.</h2>
+  </div>
+  <div class="container">
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-icon">🚶</div>
+        <h3>Mobilität fördern</h3>
+        <p>Beweglichkeit verbessern, Kraft aufbauen und aktiv bleiben – damit Sie Ihren Alltag selbstständig gestalten können.</p>
+      </div>
+      <div class="card reveal" style="transition-delay:.08s">
+        <div class="card-icon">✋</div>
+        <h3>Schmerzen lindern</h3>
+        <p>Gezielte Behandlung bei akuten und chronischen Beschwerden – sanft, effektiv und nachhaltig.</p>
+      </div>
+      <div class="card reveal" style="transition-delay:.16s">
+        <div class="card-icon">🎯</div>
+        <h3>Individuelle Therapie</h3>
+        <p>Maßgeschneiderte Übungen und Betreuung – ganz auf Sie und Ihre Bedürfnisse abgestimmt.</p>
+      </div>
+      <div class="card reveal" style="transition-delay:.24s">
+        <div class="card-icon">🌿</div>
+        <h3>Unterstützung im Alltag</h3>
+        <p>Hilfe und Beratung für mehr Selbstständigkeit und Sicherheit – auch für Angehörige.</p>
+      </div>
+    </div>
+    <div class="leistungen-cta reveal">
+      <a href="#kontakt" class="btn">Termin anfragen</a>
+    </div>
+  </div>
+  <!-- Wave bottom -->
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;margin-top:80px;line-height:0;">
+    <path d="M0,30 C480,90 960,0 1440,50 L1440,90 L0,90 Z" fill="var(--white)"/>
+  </svg>
+</section>
+
+<!-- ─── HAUSBESUCHE ────────────────────────────── -->
+<section class="hausbesuche" id="hausbesuche">
+  <div class="haus-wave-deco"></div>
+  <div class="container">
+    <div class="hausbesuche-inner">
+      <div class="reveal">
+        <div class="haus-tag tag">Hausbesuche</div>
+        <h2>Warum Physiotherapie<br>zuhause so wertvoll ist.</h2>
+        <p class="haus-body">
+          In vertrauter Umgebung fällt es oft leichter, Übungen umzusetzen
+          und Fortschritte zu machen. Ich nehme mir Zeit für Sie – nicht nur
+          für die Behandlung, sondern auch für den Menschen dahinter.<br><br>
+          Gerne können sich auch Angehörige bei mir melden, wenn Sie
+          Unterstützung bei der Pflege oder Begleitung benötigen.
+        </p>
+        <a href="#kontakt" class="more-link">Termin vereinbaren &rarr;</a>
+      </div>
+      <div class="haus-image reveal" style="transition-delay:.1s">
+        <img src="images/hausbesuche.png" alt="Physiotherapeutin bei einem Hausbesuch" />
+      </div>
+    </div>
+  </div>
+  <!-- Wave bottom -->
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;margin-top:80px;line-height:0;">
+    <path d="M0,60 C360,0 1080,90 1440,30 L1440,90 L0,90 Z" fill="var(--green)"/>
+  </svg>
+</section>
+
+<!-- ─── CTA BAND ───────────────────────────────── -->
+<section class="cta-band" id="kontakt">
+  <div class="container">
+    <div class="cta-band-inner">
+      <div class="cta-band-left reveal">
+        <h2>Ich bin für Sie da.</h2>
+        <p>Gerne können sich auch Angehörige bei mir melden.</p>
+      </div>
+      <div class="cta-band-info reveal" style="transition-delay:.1s">
+        <div class="cta-info-item">
+          <span>📞</span>
+          <span>0176 123 45 678</span>
+        </div>
+        <div class="cta-info-item">
+          <span>📍</span>
+          <span>Hamburg &amp; Umgebung &nbsp;·&nbsp; Hausbesuche</span>
+        </div>
+        <div class="cta-info-item">
+          <span>✉️</span>
+          <span>info@ebru-aydin.de</span>
+        </div>
+      </div>
+      <div class="cta-band-right reveal" style="transition-delay:.2s">
+        <a href="tel:+4917612345678" class="btn">Jetzt anrufen</a>
+        <a href="mailto:info@ebru-aydin.de" class="btn btn-outline">E-Mail schreiben</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-brand">© 2024 Ebru Aydin – Physiotherapie mit Herz</span>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
