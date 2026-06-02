@@ -177,10 +177,6 @@
       0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(-10px); }
     }
-    /* Blob-Morph auf Mobile deaktivieren (border-radius animation ist teuer) */
-    @media (max-width: 768px) {
-      .hero-image-blob { animation: none; will-change: auto; }
-    }
     /* Alle Animationen für Nutzer mit Bewegungsempfindlichkeit reduzieren */
     @media (prefers-reduced-motion: reduce) {
       .reveal { transition: opacity .4s ease; transform: none; }
