@@ -93,13 +93,26 @@
     .nav-links a:hover { color: var(--beige); }
     .nav-cta { margin-left: 16px; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { width: 24px; height: 2px; background: var(--beige); border-radius: 2px; transition: .3s; }
-    .mobile-menu {
-      display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 99;
-      background: var(--green-dark); padding: 24px 40px;
-      flex-direction: column; gap: 20px;
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--beige); border-radius: 2px;
+      transition: transform .35s ease, opacity .25s ease;
+      transform-origin: center;
     }
-    .mobile-menu.open { display: flex; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      position: fixed; top: 70px; left: 0; right: 0; z-index: 99;
+      background: var(--green-dark); padding: 0 40px;
+      flex-direction: column; gap: 20px;
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease, opacity .3s ease;
+      opacity: 0; display: flex;
+    }
+    .mobile-menu.open {
+      max-height: 400px; padding: 28px 40px;
+      opacity: 1;
+    }
     .mobile-menu a { color: var(--beige); text-decoration: none; font-size: 16px; font-weight: 400; }
     .mobile-menu .btn { align-self: flex-start; margin-top: 8px; }
 
@@ -861,6 +874,7 @@
   // Mobile menu
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
   }
 
   // Scroll reveal
