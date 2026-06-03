@@ -95,9 +95,9 @@
     }
     .nav-links a:hover { color: var(--beige); }
     .nav-cta { margin-left: 16px; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .hamburger span {
-      width: 24px; height: 2px; background: var(--beige); border-radius: 2px;
+      width: 24px; height: 2px; background: #ffffff; border-radius: 2px;
       transition: transform .35s ease, opacity .25s ease;
       transform-origin: center;
     }
@@ -374,16 +374,17 @@
     /* ─── KONTAKT SECTION ────────────────────────── */
     .kontakt-section {
       background: var(--white);
-      padding: 80px 0 0;
+      padding: 80px 0 170px;
       position: relative;
     }
     .kontakt-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-      padding-bottom: 100px;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding-bottom: 0;
+      max-width: 760px; margin: 0 auto;
     }
     .kontakt-header { margin-bottom: 48px; }
-    .kontakt-header .tag { margin-bottom: 16px; }
+    .kontakt-header .tag { justify-content: center; margin-bottom: 16px; }
     .kontakt-header h2 {
       font-family: 'Cormorant Garant', serif;
       font-size: clamp(36px, 4vw, 56px); font-weight: 400;
@@ -392,14 +393,23 @@
     .kontakt-sub {
       font-size: 17px; color: var(--muted); line-height: 1.7;
     }
+    .kontakt-image {
+      width: 100%; height: 400px;
+      object-fit: cover; border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(22,47,39,.12);
+      margin-bottom: 56px;
+    }
     .kontakt-cards {
-      display: flex; flex-direction: column;
-      gap: 28px;
+      display: flex; flex-direction: row;
+      justify-content: center; gap: 0;
     }
     .kontakt-card {
       text-decoration: none; display: flex; flex-direction: column;
-      gap: 4px; transition: opacity .2s;
+      gap: 4px; padding: 0 36px;
+      border-right: 1px solid var(--beige-mid);
+      transition: opacity .2s;
     }
+    .kontakt-card:last-child { border-right: none; }
     .kontakt-card:hover { opacity: .7; }
     .kontakt-card-icon { display: none; }
     .kontakt-card-label {
@@ -408,17 +418,14 @@
     }
     .kontakt-card-value {
       font-family: 'Cormorant Garant', serif;
-      font-size: 28px; font-weight: 400; color: var(--text);
+      font-size: 24px; font-weight: 400; color: var(--text);
+      white-space: nowrap;
     }
     .kontakt-card-hint { display: none; }
-    .kontakt-image {
-      width: 100%; height: 520px;
-      object-fit: cover; border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(22,47,39,.12);
-    }
     @media (max-width: 768px) {
-      .kontakt-inner { grid-template-columns: 1fr; gap: 40px; padding-bottom: 80px; }
-      .kontakt-image { height: 280px; order: -1; }
+      .kontakt-image { height: 260px; margin-bottom: 40px; }
+      .kontakt-cards { flex-direction: column; gap: 28px; }
+      .kontakt-card { border-right: none; padding: 0; }
     }
 
     /* ─── FOOTER CTA ──────────────────────────────── */
@@ -798,32 +805,30 @@
   <div class="container">
     <div class="kontakt-inner">
 
-      <!-- Links: Text + Kontakt -->
-      <div class="reveal">
-        <div class="kontakt-header">
-          <div class="tag">Kontakt</div>
-          <h2>Ich bin für Sie da.</h2>
-          <p class="kontakt-sub">Rufen Sie mich an oder schreiben Sie mir – ich melde mich schnellstmöglich bei Ihnen.</p>
-        </div>
-        <div class="kontakt-cards">
-          <a href="tel:+4917612345678" class="kontakt-card">
-            <span class="kontakt-card-label">Telefon</span>
-            <span class="kontakt-card-value">0176 123 45 678</span>
-          </a>
-          <a href="https://wa.me/4917612345678" target="_blank" rel="noopener" class="kontakt-card">
-            <span class="kontakt-card-label">WhatsApp</span>
-            <span class="kontakt-card-value">0176 123 45 678</span>
-          </a>
-          <a href="mailto:info@ebru-aydin.de" class="kontakt-card">
-            <span class="kontakt-card-label">E-Mail</span>
-            <span class="kontakt-card-value">info@ebru-aydin.de</span>
-          </a>
-        </div>
+      <!-- Header -->
+      <div class="kontakt-header reveal">
+        <div class="tag">Kontakt</div>
+        <h2>Ich bin für Sie da.</h2>
+        <p class="kontakt-sub">Rufen Sie mich an oder schreiben Sie mir – ich melde mich schnellstmöglich bei Ihnen.</p>
       </div>
 
-      <!-- Rechts: Bild -->
-      <div class="reveal" style="transition-delay:.15s">
-        <img class="kontakt-image" src="images/kontakt.jpeg" alt="Ebru Aydin" />
+      <!-- Bild -->
+      <img class="kontakt-image reveal" style="transition-delay:.1s" src="images/kontakt.jpeg" alt="Ebru Aydin" />
+
+      <!-- Kontaktinfos -->
+      <div class="kontakt-cards reveal" style="transition-delay:.2s">
+        <a href="tel:+4917612345678" class="kontakt-card">
+          <span class="kontakt-card-label">Telefon</span>
+          <span class="kontakt-card-value">0176 123 45 678</span>
+        </a>
+        <a href="https://wa.me/4917612345678" target="_blank" rel="noopener" class="kontakt-card">
+          <span class="kontakt-card-label">WhatsApp</span>
+          <span class="kontakt-card-value">0176 123 45 678</span>
+        </a>
+        <a href="mailto:info@ebru-aydin.de" class="kontakt-card">
+          <span class="kontakt-card-label">E-Mail</span>
+          <span class="kontakt-card-value">info@ebru-aydin.de</span>
+        </a>
       </div>
 
     </div>
