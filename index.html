@@ -283,6 +283,67 @@
     .card p { font-size: 15px; color: var(--muted); line-height: 1.8; }
     .leistungen-cta { text-align: center; }
 
+    /* ─── MASSNAHMEN ─────────────────────────────── */
+    .massnahmen {
+      background: var(--white);
+      padding: 80px 0 80px;
+      position: relative;
+    }
+    .massnahmen-header { text-align: center; margin-bottom: 56px; }
+    .massnahmen-header .tag { justify-content: center; margin-bottom: 16px; }
+    .massnahmen-header h2 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 400; line-height: 1.2; color: var(--text);
+    }
+    .massnahmen-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; align-items: start;
+    }
+    .massnahme-item {
+      background: var(--beige-light);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform .2s;
+      overflow: hidden;
+    }
+    .massnahme-item:hover { transform: translateY(-2px); }
+    .massnahme-top {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px;
+    }
+    .massnahme-dot { display: none; }
+    .massnahme-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--terra); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .massnahme-name {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 20px; font-weight: 500; color: var(--text);
+      flex: 1;
+    }
+    .massnahme-toggle {
+      width: 20px; height: 20px; flex-shrink: 0; opacity: .35;
+      transition: transform .3s ease;
+    }
+    .massnahme-item.open .massnahme-toggle { transform: rotate(180deg); }
+    .massnahme-info {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      padding: 0 24px;
+    }
+    .massnahme-item.open .massnahme-info {
+      max-height: 160px;
+      padding: 0 24px 20px;
+    }
+    .massnahme-info p {
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+      padding-left: 60px;
+    }
+    @media (max-width: 1024px) { .massnahmen-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .massnahmen-grid { grid-template-columns: 1fr; } }
+
     /* ─── HAUSBESUCHE ─────────────────────────────── */
     .hausbesuche {
       background: var(--white);
@@ -620,15 +681,15 @@
     <div class="about-inner">
       <div class="about-image reveal">
         <img src="images/about.png" alt="Ebru Aydin – Physiotherapeutin" />
-        <div class="about-image-accent"></div>
       </div>
       <div class="reveal" style="transition-delay:.1s">
         <div class="about-tag tag">Über mich</div>
         <h2>Ich nehme mir<br>Zeit für Sie.</h2>
         <p class="about-body">
-          Mein Name ist Ebru und ich bin staatlich geprüfte Physiotherapeutin.
-          Mit meiner mobilen Physiotherapie komme ich direkt zu Ihnen nach Hause –
-          für eine Behandlung, die individuell auf Sie abgestimmt ist.<br><br>
+          Mein Name ist Ebru Aydin und ich arbeite seit 2006 als examinierte
+          Physiotherapeutin in Hamburg. Mit meiner mobilen Physiotherapie komme ich
+          direkt zu Ihnen nach Hause – für eine Behandlung, die individuell auf
+          Sie abgestimmt ist.<br><br>
           Nicht nur die Behandlung steht im Mittelpunkt, sondern der ganze Mensch
           dahinter. Ich nehme mir die Zeit, die Sie brauchen.
         </p>
@@ -691,21 +752,21 @@
     <div class="cards">
       <div class="card reveal">
         <div class="card-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l3 3"/><path d="M6 16c1.5-2 3.5-3 6-3s4.5 1 6 3"/></svg>
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="19" cy="5" r="2.5"/><path d="M15 11l-4 6"/><path d="M11 17l2 6 3-2"/><path d="M15 11l5 1 2 5"/><path d="M22 17l-1 6"/><path d="M11 17l-4 2"/></svg>
         </div>
         <h3>Mobilität fördern</h3>
         <p>Beweglichkeit verbessern, Kraft aufbauen und aktiv bleiben – damit Sie Ihren Alltag selbstständig gestalten können.</p>
       </div>
       <div class="card reveal" style="transition-delay:.08s">
         <div class="card-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M13 2L4 14h8l-1 8 9-12h-8l1-8z"/></svg>
         </div>
         <h3>Schmerzen lindern</h3>
         <p>Gezielte Behandlung bei akuten und chronischen Beschwerden – sanft, effektiv und nachhaltig.</p>
       </div>
       <div class="card reveal" style="transition-delay:.16s">
         <div class="card-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="16" r="3"/><circle cx="25" cy="16" r="3"/><rect x="10" y="14.5" width="12" height="3" rx="1.5"/></svg>
         </div>
         <h3>Individuelle Therapie</h3>
         <p>Maßgeschneiderte Übungen und Betreuung – ganz auf Sie und Ihre Bedürfnisse abgestimmt.</p>
@@ -728,9 +789,108 @@
   </svg>
 </section>
 
+<!-- ─── MASSNAHMEN ────────────────────────────── -->
+<section class="massnahmen" id="massnahmen">
+  <div class="container">
+    <div class="massnahmen-header reveal">
+      <div class="tag" style="justify-content:center">Meine Maßnahmen</div>
+      <h2>Behandlungen im Überblick.</h2>
+    </div>
+    <div class="massnahmen-grid">
+      <div class="massnahme-item reveal" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></div>
+          <span class="massnahme-name">Krankengymnastik</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Aktive und passive Übungen zur Wiederherstellung und Verbesserung von Beweglichkeit, Kraft und Koordination – individuell auf Ihre Beschwerden abgestimmt.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.04s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <span class="massnahme-name">Klassische Massage</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Löst Verspannungen und fördert die Durchblutung. Wohltuend bei Rücken-, Nacken- und Schulterbeschwerden.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.08s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <span class="massnahme-name">Man. Lymphdrainage</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Sanfte, rhythmische Griffe zur Entstauung und Anregung des Lymphflusses – besonders wirksam nach Operationen oder bei Ödemen.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.12s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <span class="massnahme-name">Atemtherapie</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Gezielte Atemübungen zur Verbesserung der Lungenfunktion und Atemmuskulatur – hilfreich bei Asthma, COPD oder nach Erkrankungen der Atemwege.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.16s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+          <span class="massnahme-name">Rückenschule</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Erlernen rückengerechter Bewegungen und Haltungen für den Alltag – beugt Beschwerden vor und stärkt die Rumpfmuskulatur.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.2s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <span class="massnahme-name">Palliative Krankengymnastik</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Einfühlsame physiotherapeutische Begleitung in der Palliativversorgung – zur Linderung von Beschwerden und Erhaltung der Lebensqualität.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.24s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span class="massnahme-name">CMD-Therapie</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Behandlung von Kiefergelenksbeschwerden und Fehlfunktionen – bei Zähneknirschen, Kieferschmerzen oder Kopfschmerzen durch Verspannungen im Kiefer.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.28s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+          <span class="massnahme-name">Kinesiotherapie</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Therapeutische Bewegungslehre zur Analyse und Korrektur von Bewegungsmustern – fördert natürliche Bewegungsabläufe und beugt Fehlbelastungen vor.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.32s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5v14"/><path d="M18 5v14"/><path d="M6 9h12"/><path d="M6 15h12"/><circle cx="6" cy="5" r="1.5"/><circle cx="18" cy="5" r="1.5"/><circle cx="6" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/></svg></div>
+          <span class="massnahme-name">Personal Training</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Individuelles Fitness- und Krafttraining bei Ihnen zuhause – abgestimmt auf Ihre Ziele, ob Muskelaufbau, Ausdauer oder allgemeine Fitness.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.36s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <span class="massnahme-name">Bindegewebsmassage</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Spezielle Grifftechnik, die tiefliegende Verspannungen im Bindegewebe löst und die Durchblutung sowie den Stoffwechsel anregt – wirkt reflektorisch auf innere Organe.</p></div>
+      </div>
+      <div class="massnahme-item reveal" style="transition-delay:.4s" onclick="this.classList.toggle('open')">
+        <div class="massnahme-top"><div class="massnahme-dot"></div>
+          <div class="massnahme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <span class="massnahme-name">Kinesiotaping</span>
+          <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="massnahme-info"><p>Elastische Tapes werden gezielt auf die Haut aufgebracht, um Muskeln zu unterstützen, Schwellungen zu reduzieren und Schmerzen zu lindern – ohne die Bewegungsfreiheit einzuschränken.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── HAUSBESUCHE ────────────────────────────── -->
 <section class="hausbesuche" id="hausbesuche">
-  <div class="haus-wave-deco"></div>
   <div class="container">
     <div class="hausbesuche-inner">
       <div class="reveal">
@@ -740,6 +900,9 @@
           In vertrauter Umgebung fällt es oft leichter, Übungen umzusetzen
           und Fortschritte zu machen. Ich nehme mir Zeit für Sie – nicht nur
           für die Behandlung, sondern auch für den Menschen dahinter.<br><br>
+          Sie sparen wertvolle Zeit und Kraft, weil An- und Rückfahrt
+          komplett entfallen. Keine langen Wartezeiten, keine Kosten für
+          Taxi oder Parkgebühren.<br><br>
           Gerne können sich auch Angehörige bei mir melden, wenn Sie
           Unterstützung bei der Pflege oder Begleitung benötigen.
         </p>
