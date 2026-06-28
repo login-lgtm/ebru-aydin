@@ -6,9 +6,16 @@
   <title>Ebru Aydin – Physiotherapie mit Herz</title>
   <meta name="description" content="Mobile Physiotherapie in Hamburg. Ebru Aydin kommt zu Ihnen nach Hause – für eine individuelle, persönliche Behandlung." />
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/cormorant-garamond-400.ttf) format('truetype'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 500; font-display: swap; src: url(fonts/cormorant-garamond-500.ttf) format('truetype'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/cormorant-garamond-600.ttf) format('truetype'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/cormorant-garamond-italic-400.ttf) format('truetype'); }
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300; font-display: swap; src: url(fonts/dm-sans-300.ttf) format('truetype'); }
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/dm-sans-400.ttf) format('truetype'); }
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url(fonts/dm-sans-500.ttf) format('truetype'); }
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/dm-sans-700.ttf) format('truetype'); }
+  </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -83,7 +90,7 @@
       width: 40px; height: 40px; border-radius: 50%;
       background: rgba(247,242,234,.12);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garant', serif; font-size: 14px;
+      font-family: 'Cormorant Garamond', serif; font-size: 14px;
       color: var(--beige); font-weight: 700;
     }
     .nav-logo-text { display: flex; flex-direction: column; }
@@ -138,7 +145,7 @@
     .hero-content { padding-top: 80px; padding-bottom: 120px; position: relative; z-index: 2; }
     .hero-tag { margin-bottom: 24px; }
     .hero h1 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(42px, 5vw, 68px);
       font-weight: 400; line-height: 1.12;
       color: var(--text); margin-bottom: 20px;
@@ -219,7 +226,7 @@
     }
     .about-tag { margin-bottom: 20px; }
     .about h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(34px, 3.5vw, 48px);
       font-weight: 400; line-height: 1.2;
       color: var(--text); margin-bottom: 24px;
@@ -257,7 +264,7 @@
     .leistungen-header { text-align: center; margin-bottom: 64px; }
     .leistungen-header .tag { justify-content: center; margin-bottom: 16px; }
     .leistungen-header h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(32px, 3.5vw, 48px);
       font-weight: 400; line-height: 1.2; color: var(--text);
     }
@@ -280,7 +287,7 @@
       transition: transform .3s ease;
       box-shadow: 0 8px 20px rgba(192,90,56,.25);
     }
-    .card h3 { font-family: 'Cormorant Garant', serif; font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
     .card p { font-size: 15px; color: var(--muted); line-height: 1.8; }
     .leistungen-cta { text-align: center; }
 
@@ -293,7 +300,7 @@
     .massnahmen-header { text-align: center; margin-bottom: 56px; }
     .massnahmen-header .tag { justify-content: center; margin-bottom: 16px; }
     .massnahmen-header h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(32px, 3.5vw, 48px);
       font-weight: 400; line-height: 1.2; color: var(--text);
     }
@@ -320,7 +327,7 @@
       justify-content: center; flex-shrink: 0;
     }
     .massnahme-name {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 20px; font-weight: 500; color: var(--text);
       flex: 1;
     }
@@ -357,7 +364,7 @@
     }
     .haus-tag { margin-bottom: 20px; }
     .hausbesuche h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(32px, 3.5vw, 46px);
       font-weight: 400; line-height: 1.2;
       color: var(--text); margin-bottom: 24px;
@@ -386,7 +393,7 @@
     .ablauf-header { text-align: center; margin-bottom: 64px; }
     .ablauf-header .tag { justify-content: center; margin-bottom: 16px; }
     .ablauf-header h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(32px, 3.5vw, 48px);
       font-weight: 400; line-height: 1.2; color: var(--text);
     }
@@ -401,7 +408,7 @@
       position: relative; overflow: hidden;
     }
     .ablauf-num {
-      font-family: 'Cormorant Garant', serif; font-size: 140px; font-weight: 400;
+      font-family: 'Cormorant Garamond', serif; font-size: 140px; font-weight: 400;
       color: var(--beige-mid); line-height: 1;
       position: absolute; bottom: -20px; right: 8px;
       opacity: .35; pointer-events: none; user-select: none;
@@ -412,7 +419,7 @@
       justify-content: center; margin: 0 auto 20px;
     }
     .ablauf-step h3 {
-      font-family: 'Cormorant Garant', serif; font-size: 24px; font-weight: 500;
+      font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500;
       color: var(--text); margin-bottom: 12px;
     }
     .ablauf-step p { font-size: 15px; color: var(--muted); line-height: 1.8; }
@@ -448,7 +455,7 @@
     .kontakt-header { margin-bottom: 48px; }
     .kontakt-header .tag { justify-content: center; margin-bottom: 16px; }
     .kontakt-header h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(36px, 4vw, 56px); font-weight: 400;
       color: var(--text); margin-bottom: 16px;
     }
@@ -479,7 +486,7 @@
       font-weight: 700; color: var(--terra);
     }
     .kontakt-card-value {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 24px; font-weight: 400; color: var(--text);
       white-space: nowrap;
     }
@@ -501,7 +508,7 @@
       gap: 40px; flex-wrap: wrap;
     }
     .footer-cta-left h2 {
-      font-family: 'Cormorant Garant', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 3vw, 42px); font-weight: 400;
       color: var(--beige); margin-bottom: 8px;
     }
@@ -764,7 +771,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M13 2L4 14h8l-1 8 9-12h-8l1-8z"/></svg>
         </div>
         <h3>Schmerzen lindern</h3>
-        <p>Gezielte Behandlung bei akuten und chronischen Beschwerden – sanft, effektiv und nachhaltig.</p>
+        <p>Gezielte Behandlung bei akuten und chronischen Beschwerden – sanft und individuell auf Sie abgestimmt.</p>
       </div>
       <div class="card reveal" style="transition-delay:.16s">
         <div class="card-icon">
@@ -821,7 +828,7 @@
           <span class="massnahme-name">Man. Lymphdrainage</span>
           <svg class="massnahme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="massnahme-info"><p>Sanfte, rhythmische Griffe zur Entstauung und Anregung des Lymphflusses – besonders wirksam nach Operationen oder bei Ödemen.</p></div>
+        <div class="massnahme-info"><p>Sanfte, rhythmische Griffe zur Entstauung und Anregung des Lymphflusses – häufig eingesetzt nach Operationen oder bei Ödemen.</p></div>
       </div>
       <div class="massnahme-item reveal" style="transition-delay:.12s" onclick="this.classList.toggle('open')">
         <div class="massnahme-top"><div class="massnahme-dot"></div>
